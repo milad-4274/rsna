@@ -1,0 +1,3 @@
+* transfer learning for getting embeddings (test for train or not train them using labels)
+* aggregate all images from patient and use them for training and predicting(multi view classification)
+* handle imbalanced data using weigth sensitive loss
