@@ -19,7 +19,8 @@ def create_dataloader(dataset, batch_size):
         dataset,
         batch_size,
         shuffle=True,
-        num_workers=os.cpu_count()
+        num_workers=os.cpu_count(),
+        collate_fn=dicom_collate_fn
     )
     return data_loader
 
