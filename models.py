@@ -10,7 +10,6 @@ class Resnet18Extractor(nn.Module):
         super().__init__()
         model = models.resnet18(pretrained=True)
         self.extractor = nn.Sequential(*list(model.children())[:-1])
-        print(model)
     
     def forward(self,x):
         return self.extractor(x)

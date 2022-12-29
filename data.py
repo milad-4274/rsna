@@ -2,6 +2,17 @@ from torch.utils.data import DataLoader
 from torchvision.datasets import ImageFolder
 from torchvision import transforms
 import os
+import pydicom
+
+
+def check_image(path):
+    try:
+        im = image = pydicom.dcmread(path)
+        return True
+    except:
+        return False
+
+    
 
 def create_dataset(path,size_transforms, augment):
     if augment:
@@ -11,7 +22,7 @@ def create_dataset(path,size_transforms, augment):
         ])
     else:
         final_transforms = size_transforms
-    train_datset = ImageFolder(path, transform= final_transforms, target_transform=None)
+    train_datset = ImageFolder(path, transform= final_transforms, target_transform=None, is_valid_file= check_image)
 
 
 def create_dataloader(dataset, batch_size):
