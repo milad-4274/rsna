@@ -7,8 +7,8 @@ import pydicom
 
 def check_image(path):
     try:
-        im = image = pydicom.dcmread(path)
-        return True
+        with pydicom.dcmread(path) as f:
+            return True
     except:
         return False
 
