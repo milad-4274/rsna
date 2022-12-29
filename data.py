@@ -1,6 +1,7 @@
 from torch.utils.data import dataloader
 from torchvision.datasets import ImageFolder
 from torchvision import transforms
+import os
 
 def create_dataset(path,size_transforms, augment):
     if augment:
@@ -13,4 +14,11 @@ def create_dataset(path,size_transforms, augment):
     train_datset = ImageFolder(path, transform= final_transforms, target_transform=None)
 
 
-def create_dataloader(dataset, batch_size, )
+def create_dataloader(dataset, batch_size):
+    data_loader = dataloader(
+        dataset,
+        batch_size,
+        shuffle=True,
+        num_workers=os.cpu_count()
+    )
+    return data_loader
